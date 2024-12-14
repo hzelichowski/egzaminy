@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stacja paliw</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="baner">
+        <h1>Całodobowa stacja paliw</h1>
+    </div>
+    <div class="menu">
+        <a href="stacja.html"><img src="home.png" alt=""></a>
+        <a href="obliczenia.html"><img src="znak.png" alt=""></a>
+        <a href="kwerendy.txt">Pobierz dokumenty</a>
+    </div>
+    <div class="lewy">
+        <h2>Orientacyjny koszt paliwa</h2>
+        <form>
+            rodzaj: <br>
+            <input type="number" id="rodzaj">   <br>
+            ilosc: <br>
+            <input type="number" id="ilosc"> <br>
+            <button type="button" onclick="obliczanie()">BUTTON</button>
+            <p id="wynik"></p>
+        </form>
+    </div>
+    <div class="prawy">
+        <img src="samochod.png" alt="samochod" id="samochod">
+    </div>
+    <div class="stopka">
+        <p>Strone opracowal hubert zelichowski</p>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>

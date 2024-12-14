@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Usługi fryzjerskie</title>
+</head>
+<body>
+    <div class="lewo1">
+        <a href="index.html"><h2>SALON FRYZJERSKI</h2></a>
+        <img src="obraz2.jpg" alt="Czesanie" />
+    </div> 
+    <div class="prawo1">
+        <h2>MENU</h2>
+    </div>
+    <div class="prawo2">
+        <ol>
+            <li><a href="fryzura.html">Strzyżenie</a>
+                <ul>
+                    <li> krótkie</li>
+                    <li>średnie</li>
+                    <li>półdługie</li>
+                    <li>długie</li>
+                </ul>
+            </li>
+            <li>Czesanie</li>
+            <li>Koloryzacja</li>
+        </ol>
+    </div>
+   
+    <div class="lewo2">
+        <h3>Dziś promocja na strzyżenie włosów</h3>
+		<label>
+			<input type="radio" name="typ" id="p1">
+			Krótkie<br>
+		</label>
+		<label>
+			<input type="radio" name="typ" id="p2">
+			Średnie<br>
+		</label>
+		<label>
+			<input type="radio" name="typ" id="p3">
+			Półdługie<br>
+		</label>
+		<label>
+			<input type="radio" name="typ" id="p4">
+			Długie<br>
+		</label>
+		<button type="button" onclick="oblicz()">Odkryj promocję</button>
+		<p id="wyn"></p>
+    </div>
+    <div class="prawo3">
+        <img src="obraz1.jpg" alt="Fryzjer">
+    </div>
+    <div class="stopka">
+        <p>AUTOR: Hubert Żelichowski</p>
+    </div>
+    <script>
+    function oblicz() {
+	    let p1 = document.getElementById("p1").checked;
+	    let p2 = document.getElementById("p2").checked;
+	    let p3 = document.getElementById("p3").checked;
+	    let p4 = document.getElementById("p4").checked;
+	    let wyn = document.getElementById("wyn");
+	    let cena = 0;
+	    if(p1) cena = 25;
+	    if(p2) cena = 30;
+	    if(p3) cena = 40;
+	    if(p4) cena = 50;
+	    wyn.innerHTML = "Cena strzyżenia: " + cena + "zł";
+    }
+    </script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+INSERT INTO `klienci` (`id`, `imie`, `nazwisko`, `email`, `data_rejestracji`) VALUES (NULL, 'Jan', 'Kowalski', 'jan.kowalski@example.com', '2024-09-18');
+INSERT INTO `klienci` (`id`, `imie`, `nazwisko`, `email`, `data_rejestracji`) VALUES (NULL, 'Anna', 'Nowak', 'anna.nowak@example.com', '2024-09-18');
+INSERT INTO `klienci` (`id`, `imie`, `nazwisko`, `email`, `data_rejestracji`) VALUES (NULL, 'Piotr', 'Wiśniewski', 'piotr.wisniewski@example.com', '2024-09-18');
+INSERT INTO `klienci` (`id`, `imie`, `nazwisko`, `email`, `data_rejestracji`) VALUES (NULL, 'Katarzyna', 'Wójcik', 'katarzyna.wojcik@example.com', '2024-09-18');
+INSERT INTO `klienci` (`id`, `imie`, `nazwisko`, `email`, `data_rejestracji`) VALUES (NULL, 'Tomasz', 'Kowalczyk', 'tomasz.kowalczyk@example.com', '2024-09-18');
+INSERT INTO `klienci` (`id`, `imie`, `nazwisko`, `email`, `data_rejestracji`) VALUES (NULL, 'Agnieszka', 'Kamińska', 'agnieszka.kaminska@example.com', '2024-09-18');
+INSERT INTO `klienci` (`id`, `imie`, `nazwisko`, `email`, `data_rejestracji`) VALUES (NULL, 'Michał', 'Lewandowski', 'michal.lewandowski@example.com', '2024-09-18');
+INSERT INTO `klienci` (`id`, `imie`, `nazwisko`, `email`, `data_rejestracji`) VALUES (NULL, 'Magdalena', 'Zielińska', 'magdalena.zielinska@example.com', '2024-09-18');
+INSERT INTO `klienci` (`id`, `imie`, `nazwisko`, `email`, `data_rejestracji`) VALUES (NULL, 'Paweł', 'Szymański', 'pawel.szymanski@example.com', '2024-09-18');
+INSERT INTO `klienci` (`id`, `imie`, `nazwisko`, `email`, `data_rejestracji`) VALUES (NULL, 'Ewa', 'Woźniak', 'ewa.wozniak@example.com', '2024-09-18');

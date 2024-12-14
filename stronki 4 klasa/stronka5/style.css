@@ -1,0 +1,54 @@
+body{
+    margin: 0;
+    font-family: garamond;
+}
+
+.clr{
+    clear: both;
+    height: 0;
+}
+
+#baner{
+    width: 100%;
+    height: 150px;
+
+
+    background: #3CB371;
+    color: white;
+    font-size: 130%;
+    padding: 10px;
+    text-align: center;
+}
+
+#lewy{
+    background: #FAEBD7;
+    width: 55%;
+    height: 450px;
+    float: left;
+}
+
+#prawy{
+    background: #FAEBD7;
+    width: 45%;
+    height: 450px;
+    float: left;
+}
+
+#stopka{
+    width: 100%;
+    height: 140px;
+
+
+    background: #3CB371;
+    color: white;
+    font-size: 130%;
+    padding: 10px;
+    text-align: center;
+}
+img{
+    padding: 3px;
+    margin: 15px;
+    border: 2px ;
+    border-color: #3CB371;
+    border-style: dashed;
+}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    <div class="main">
+        <h3>Oblicz cene paliwa</h3>
+        <label for="typ">Jaki typ miska?</label>
+        <input type="number" id="typ"><br>
+
+        <label for="ilosc">RGB?</label>
+        <input type="number" id="r"> 
+        <input type="number" id="g">
+        <input type="number" id="b"> <br>
+
+		<button type="button" onclick="oblicz()" id="oblicz">Oblicz</button><br>
+		<div id="wyn"></div>
+        <input type="button" id="kolor" value="wybrany kolor">
+    </div>
+    <script>
+        function oblicz() {
+        let typ = document.getElementById("typ").value;
+        let ksztalt;
+        let r = document.getElementById("r").value;
+        let g = document.getElementById("g").value;
+        let b = document.getElementById("b").value;
+        let wyn = document.getElementById("wyn");
+            
+
+        // if (typ <= 0) {
+        //     wyn.innerHTML = "<h4>Wystąpił błąd krytyczny !!! Wybierz ilość !!!</h4>";
+        // }else{
+        // wyn.innerHTML = "Cena " + ilosc + " litrow " + typ + " to: " + eval(cena * ilosc) + " zł.";
+        // }
+        if(typ == 1){
+            ksztalt = "mis";
+        }else if(typ == 2){
+            ksztalt = "zabka";
+        }else if(typ == 3){
+            ksztalt = "serce";
+        }else{
+            ksztalt = "inny"
+        }
+
+
+        if(typ >= 1 && typ <= 3){
+            wyn.innerHTML = "<h4>zamówiłeś misia o kształcie " + ksztalt + "</h4>";
+        }else{
+            wyn.innerHTML = "<h4>Wystąpił błąd krytyczny !!! Wybierz ilość !!!</h4>";
+        }
+        
+        document.getElementById('kolor').style.backgroundColor = 'rgb('+r+','+g+','+b+')';
+
+        }
+    </script>
+</body>
+</html>

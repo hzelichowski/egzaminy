@@ -1,0 +1,86 @@
+-- 1. Utwórz nową bazę danych o nazwie sklep_online z odpowiednim zestawem znaków
+CREATE DATABASE sklep_online CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+ 
+-- 2. Utwórz tabelę produkty zawierającą pola: id, nazwa, cena, kategoria
+CREATE TABLE produkty (id INT AUTO_INCREMENT PRIMARY KEY, nazwa VARCHAR(255) NOT NULL, cena DECIMAL(10, 2) NOT NULL, kategoria VARCHAR(255) NOT NULL);
+ 
+-- 3. Utwórz tabelę klienci zawierającą pola: id, imię, nazwisko, email, data_rejestracji
+CREATE TABLE klienci ( id INT AUTO_INCREMENT PRIMARY KEY, imię VARCHAR(255) NOT NULL, nazwisko VARCHAR(255) NOT NULL, email VARCHAR(255) NOT NULL UNIQUE, data_rejestracji DATE NOT NULL
+);
+ 
+-- 4. Dodaj nową kolumnę ilosc_na_stanie do tabeli produkty
+ALTER TABLE produkty ADD COLUMN ilosc_na_stanie INT NOT NULL DEFAULT 0;
+ 
+-- 5. Usuń kolumnę ilosc_na_stanie z tabeli produkty
+ALTER TABLE produkty DROP COLUMN ilosc_na_stanie;
+ 
+-- 6. Zmień nazwę tabeli produkty na asortyment
+ALTER TABLE produkty RENAME TO asortyment;
+ 
+-- 7. Usuń tabelę asortyment z bazy danych
+DROP TABLE asortyment;
+ 
+-- 8. Utwórz relację jeden do wielu między tabelami klienci i zamowienia (klient może mieć wiele zamówień)
+CREATE TABLE zamowienia (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    klient_id INT,
+    data_zamowienia DATE NOT NULL,
+    FOREIGN KEY (klient_id) REFERENCES klienci(id)
+);
+ 
+-- 9. Utwórz indeks na polu email w tabeli klienci
+CREATE INDEX idx_email ON klienci(email);
+ 
+-- 10. Zoptymalizuj bazę danych za pomocą odpowiedniego polecenia
+OPTIMIZE TABLE klienci, zamowienia;
+ 
+-- 11. Wstaw pięć przykładowych rekordów do tabeli produkty
+INSERT INTO produkty (nazwa, cena, ilosc_na_stanie) VALUES ('Laptop', 2500, 10);
+INSERT INTO produkty (nazwa, cena, ilosc_na_stanie) VALUES ('Smartfon', 1500, 20);
+INSERT INTO produkty (nazwa, cena, ilosc_na_stanie) VALUES ('Tablet', 1200, 15);
+INSERT INTO produkty (nazwa, cena, ilosc_na_stanie) VALUES ('Monitor', 800, 25);
+INSERT INTO produkty (nazwa, cena, ilosc_na_stanie) VALUES ('Klawiatura', 100, 50);
+ 
+-- 12. Wstaw dziesięć przykładowych klientów do tabeli klienci
+INSERT INTO klienci (imie, nazwisko, email) VALUES ('Jan', 'Kowalski', 'jan.kowalski@example.com');
+INSERT INTO klienci (imie, nazwisko, email) VALUES ('Anna', 'Nowak', 'anna.nowak@example.com');
+INSERT INTO klienci (imie, nazwisko, email) VALUES ('Piotr', 'Wiśniewski', 'piotr.wisniewski@example.com');
+INSERT INTO klienci (imie, nazwisko, email) VALUES ('Katarzyna', 'Wójcik', 'katarzyna.wojcik@example.com');
+INSERT INTO klienci (imie, nazwisko, email) VALUES ('Tomasz', 'Kowalczyk', 'tomasz.kowalczyk@example.com');
+INSERT INTO klienci (imie, nazwisko, email) VALUES ('Agnieszka', 'Kamińska', 'agnieszka.kaminska@example.com');
+INSERT INTO klienci (imie, nazwisko, email) VALUES ('Michał', 'Lewandowski', 'michal.lewandowski@example.com');
+INSERT INTO klienci (imie, nazwisko, email) VALUES ('Magdalena', 'Zielińska', 'magdalena.zielinska@example.com');
+INSERT INTO klienci (imie, nazwisko, email) VALUES ('Paweł', 'Szymański', 'pawel.szymanski@example.com');
+INSERT INTO klienci (imie, nazwisko, email) VALUES ('Ewa', 'Woźniak', 'ewa.wozniak@example.com');
+ 
+-- 13. Zaktualizuj cenę produktu o nazwie "Laptop" na 3000 PLN
+UPDATE produkty SET cena = 3000 WHERE nazwa = 'Laptop';
+ 
+-- 14. Zaktualizuj adres e-mail klienta o ID 5 na "nowy_email@example.com"
+UPDATE klienci SET email = 'nowy_email@example.com' WHERE id = 5;
+ 
+-- 15. Wstaw zamówienie dla klienta o ID 1, zawierające produkt o ID 2
+INSERT INTO zamowienia (klient_id, produkt_id, ilosc) VALUES (1, 2, 1);
+ 
+-- 16. Dodaj 5 nowych kategorii produktów do tabeli kategorie
+INSERT INTO kategorie (nazwa) VALUES ('Elektronika');
+INSERT INTO kategorie (nazwa) VALUES ('AGD');
+INSERT INTO kategorie (nazwa) VALUES ('RTV');
+INSERT INTO kategorie (nazwa) VALUES ('Meble');
+INSERT INTO kategorie (nazwa) VALUES ('Zabawki');
+ 
+-- 17. Zaktualizuj wszystkie produkty w kategorii "AGD", aby miały 10% zniżki
+UPDATE produkty SET cena = cena * 0.9 WHERE kategoria_id = (SELECT id FROM kategorie WHERE nazwa = 'AGD');
+ 
+-- 18. Zaktualizuj datę rejestracji klienta na bieżącą datę, używając funkcji SQL
+UPDATE klienci SET data_rejestracji = CURRENT_DATE;
+ 
+-- 19. Wstaw odpowiedzi użytkowników na forum z różnych lat rejestracji i z różną liczbą postów
+INSERT INTO odpowiedzi (uzytkownik_id, tresc, data_rejestracji, liczba_postow) VALUES (1, 'Odpowiedź 1', '2020-01-01', 10);
+INSERT INTO odpowiedzi (uzytkownik_id, tresc, data_rejestracji, liczba_postow) VALUES (2, 'Odpowiedź 2', '2019-05-15', 20);
+INSERT INTO odpowiedzi (uzytkownik_id, tresc, data_rejestracji, liczba_postow) VALUES (3, 'Odpowiedź 3', '2021-07-20', 5);
+INSERT INTO odpowiedzi (uzytkownik_id, tresc, data_rejestracji, liczba_postow) VALUES (4, 'Odpowiedź 4', '2018-11-30', 15);
+INSERT INTO odpowiedzi (uzytkownik_id, tresc, data_rejestracji, liczba_postow) VALUES (5, 'Odpowiedź 5', '2022-03-10', 8);
+ 
+-- 20. Uaktualnij pole ilosc_na_stanie w tabeli produkty, aby każdy produkt miał wartość "0", jeśli nie zostało zdefiniowane inne
+UPDATE produkty SET ilosc_na_stanie = 0 WHERE ilosc_na_stanie IS NULL;

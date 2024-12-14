@@ -1,0 +1,50 @@
+*{
+    margin: 0;
+}
+body{
+    background-color: seagreen;
+    font-family: Verdana;
+}
+.baner{
+    color: white;
+    text-align: center;
+    height: 330px;
+}
+.inf{
+    width: 170px;
+    margin: 5px;
+    border: 1px solid white;
+    border-radius: 15px;
+    color: white;
+    float: left;
+}
+.inf:hover{
+    background-color: white;
+    color: black;
+}
+.glowny{
+    color: white;
+}
+.lewy{
+    background-color: whitesmoke;
+    width: 30%;
+    text-align: center;
+    height: 150px;
+    float: left;
+}
+.prawy{
+    background-color: whitesmoke;
+    width: 70%;
+    height: 150px;
+    float: left;
+}
+.clr{
+    clear: both;
+    height: 0;
+}
+h3{
+    text-align: center;
+    letter-spacing: 6px;
+    text-transform: capitalize;
+    color: white;
+}

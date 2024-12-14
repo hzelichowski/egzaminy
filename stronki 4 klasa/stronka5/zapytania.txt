@@ -1,0 +1,13 @@
+SELECT id, nazwa, wystepowanie FROM ryby WHERE styl_zycia = 2;
+SELECT akwen, wojewodztwo FROM lowisko WHERE rodzaj = 2 or 3;
+SELECT nazwa FROM ryby JOIN okres_ochronny ON ryby.id = okres_ochronny.Ryby_id WHERE okres_ochronny.wymiar_ochronny = 0;
+CREATE TABLE `wedkarze` (
+`id` INT not null,
+`imie` text,
+`nazwisko` text,
+`punkty` int
+);
+
+EE.09 : 2020 - STYCZEŃ - ZAD. 01 (PHP)
+
+https://egzamin-informatyk.pl/arkusz-praktyczny-ee09-2020-01-01/

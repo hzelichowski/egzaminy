@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="skrypt.js"></script>
+</head>
+<body>
+    <div class="lewy">
+        <h1>Konfigurator stylu</h1>
+
+        <p>Podaj kolor tła</p>
+        <button type="button" class="indigo" onclick="kolor1('Indigo')">undigo</button>
+		<button type="button" class="steelblue" onclick="kolor1('SteelBlue')">steelBlue</button>
+		<button type="button" class="olive" onclick="kolor1('Olive')">olive</button>
+
+        <p>Podaj kolor czcionki</p>
+        <select id="kolor" onchange="kolor2();">
+			<option value="White">white</button>
+			<option value="Tan">tan</option>
+			<option value="Bisque">bisque</option>
+			<option value="Plum">plum</option>
+		</select>
+
+        <p>Podaj rozmiar czcionki w procentach, np. 200%</p>
+        <input type="number" id="size" value="100" onchange="kolor3()"/>
+
+		<p>Czy rysunek ma mieć ramkę?</p>
+		<input type="checkbox" id="ramka" onchange="kolor4()"/>Rysuj ramkę
+
+		<p>Jaki jest typ punktora listy?</p>
+		<input type="radio" name="punktor" onchange="kolor5('disc')"/>dysk<br/>
+		<input type="radio" name="punktor" onchange="kolor5('square')"/>kwadrat<br/>
+		<input type="radio" name="punktor" onchange="kolor5('circle')"/>okrąg<br/>
+    </div>
+    
+    <div class="prawy" id="prawy">
+        <img src="gibraltar.jpg" alt="polwysep" id="foto">
+        <ul id="lista">
+            <li>Element1</li><li>Element2</li><li>Element3</li>
+        </ul>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo natus nemo facere error, tenetur molestiae soluta repellendus possimus delectus libero sapiente minima veritatis quidem nulla neque provident sequi quam non!</p>
+    </div>
+    <div class="stopka">
+        autor: Hubert Zelichowski
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="main">
+        <h3>Kalkulator warzywny:</h3>
+        <label for="typ">Typ produktu</label><br>
+        <select id="typ">
+			<option name="typ" value="marchew">marchew</option>
+			<option name="typ" value="cebula">cebule</option>
+			<option name="typ" value="papryka">papryka</option>
+        </select><br>
+        <label for="ilos">Ilosc produktow:</label><br>
+        <input type="number" id="ilosc"> <br><br>
+		<button type="button" onclick="oblicz()" id="oblicz">Oblicz</button>
+		<div id="wyn"></div>
+    </div>
+    <script>
+        function oblicz() {
+            let typ = document.getElementById("typ").value;
+            let ilosc = document.getElementById("ilosc").value;
+            let wyn = document.getElementById("wyn");
+            let cena = 0;
+    
+            if (typ === "marchew") {
+                cena = 2;
+            }
+            if (typ === "cebula") {
+                cena = 3;
+            }
+            if (typ === "papryka") {
+                cena = 4;
+            }
+            if (ilosc <= 0) {
+                wyn.innerHTML = "<h4>Wystąpił błąd krytyczny !!! Wybierz ilość !!!</h4>";
+            }else{
+            wyn.innerHTML = "Cena za zakupione <b>" + typ + " </b>wynosi: <b>" + eval(cena * ilosc) + "</b> zł.";
+            }
+        }
+    </script>
+    
+</body>
+</html>

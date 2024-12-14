@@ -1,0 +1,15 @@
+SELECT imie,nazwisko FROM `matematycy` WHERE rok_urodzenia > "1700"; 
+
+SELECT id,nazwisko FROM `matematycy` WHERE liczba_publikacji > 10 AND liczba_publikacji < 30;
+ 
+SELECT SUM(liczba_publikacji) FROM `matematycy` WHERE rok_urodzenia > 1750; 
+
+CREATE TABLE `publikacje` (
+`id` INT not null AUTO_INCREMENT PRIMARY KEY,
+`tytul` text,
+`rok` INT
+);
+
+EE.09-04-19.06
+https://www.praktycznyegzamin.pl/inf03ee09e14/praktyka/
+

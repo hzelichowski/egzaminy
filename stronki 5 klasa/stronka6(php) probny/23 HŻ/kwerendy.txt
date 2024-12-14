@@ -1,0 +1,6 @@
+kw1: INSERT INTO karty_wedkarskie VALUES (NULL, 'Grzegorz', 'Niemczyk', 'Gdynia, Batorego 14/5', '2018-02-23', NULL);
+kw2: SELECT * FROM `karty_wedkarskie` WHERE punkty > 20;
+kw3: SELECT lowisko.akwen FROM `lowisko` LEFT JOIN zawody_wedkarskie ON zawody_wedkarskie.id = lowisko.id WHERE zawody_wedkarskie.sedzia = "Krzysztof Dobrowolski";
+kw4: CREATE USER 'anna'@'localhost' IDENTIFIED BY 'anna123'
+
+

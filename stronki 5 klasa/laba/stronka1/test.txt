@@ -1,0 +1,98 @@
+1.CREATE DATABASE sklep_online CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+2.CREATE TABLE produkty (id INT AUTO_INCREMENT PRIMARY KEY, nazwa VARCHAR(255) NOT NULL, cena DECIMAL(10, 2) NOT NULL, kategoria VARCHAR(255) NOT NULL);
+3.CREATE TABLE klienci ( id INT AUTO_INCREMENT PRIMARY KEY, imię VARCHAR(255) NOT NULL, nazwisko VARCHAR(255) NOT NULL, email VARCHAR(255) NOT NULL UNIQUE, data_rejestracji DATE NOT NULL);
+4.ALTER TABLE produkty ADD COLUMN ilosc_na_stanie INT NOT NULL DEFAULT 0;
+5.ALTER TABLE produkty DROP COLUMN ilosc_na_stanie;
+6.ALTER TABLE produkty RENAME TO asortyment;
+7.DROP TABLE asortyment;
+8.CREATE TABLE zamowienia ( id INT AUTO_INCREMENT PRIMARY KEY, klient_id INT, data_zamowienia DATE NOT NULL, FOREIGN KEY (klient_id) REFERENCES klienci(id) );
+9.CREATE INDEX idx_email ON klienci(email);
+10.OPTIMIZE TABLE klienci, zamowienia;
+
+11.
+INSERT INTO produkty (nazwa, cena, kategoria, ilosc_na_stanie) VALUES ('Laptop', 2500, 2, 10);
+INSERT INTO produkty (nazwa, cena, kategoria, ilosc_na_stanie) VALUES ('Smartfon', 1500, 2, 20);
+INSERT INTO produkty (nazwa, cena, kategoria, ilosc_na_stanie) VALUES ('Tablet', 1200, 2, 15);
+INSERT INTO produkty (nazwa, cena, kategoria, ilosc_na_stanie) VALUES ('Monitor', 800, 2, 25);
+INSERT INTO produkty (nazwa, cena, kategoria, ilosc_na_stanie) VALUES ('Klawiatura', 100, 2, 50);
+
+12.
+INSERT INTO `klienci` (`id`, `imie`, `nazwisko`, `email`, `data_rejestracji`) VALUES (NULL, 'Jan', 'Kowalski', 'jan.kowalski@example.com', '2024-09-18');
+INSERT INTO `klienci` (`id`, `imie`, `nazwisko`, `email`, `data_rejestracji`) VALUES (NULL, 'Anna', 'Nowak', 'anna.nowak@example.com', '2024-09-18');
+INSERT INTO `klienci` (`id`, `imie`, `nazwisko`, `email`, `data_rejestracji`) VALUES (NULL, 'Piotr', 'Wiśniewski', 'piotr.wisniewski@example.com', '2024-09-18');
+INSERT INTO `klienci` (`id`, `imie`, `nazwisko`, `email`, `data_rejestracji`) VALUES (NULL, 'Katarzyna', 'Wójcik', 'katarzyna.wojcik@example.com', '2024-09-18');
+INSERT INTO `klienci` (`id`, `imie`, `nazwisko`, `email`, `data_rejestracji`) VALUES (NULL, 'Tomasz', 'Kowalczyk', 'tomasz.kowalczyk@example.com', '2024-09-18');
+INSERT INTO `klienci` (`id`, `imie`, `nazwisko`, `email`, `data_rejestracji`) VALUES (NULL, 'Agnieszka', 'Kamińska', 'agnieszka.kaminska@example.com', '2024-09-18');
+INSERT INTO `klienci` (`id`, `imie`, `nazwisko`, `email`, `data_rejestracji`) VALUES (NULL, 'Michał', 'Lewandowski', 'michal.lewandowski@example.com', '2024-09-18');
+INSERT INTO `klienci` (`id`, `imie`, `nazwisko`, `email`, `data_rejestracji`) VALUES (NULL, 'Magdalena', 'Zielińska', 'magdalena.zielinska@example.com', '2024-09-18');
+INSERT INTO `klienci` (`id`, `imie`, `nazwisko`, `email`, `data_rejestracji`) VALUES (NULL, 'Paweł', 'Szymański', 'pawel.szymanski@example.com', '2024-09-18');
+INSERT INTO `klienci` (`id`, `imie`, `nazwisko`, `email`, `data_rejestracji`) VALUES (NULL, 'Ewa', 'Woźniak', 'ewa.wozniak@example.com', '2024-09-18');
+
+13.UPDATE produkty SET cena = 3000 WHERE nazwa = 'Laptop';
+
+14.UPDATE klienci SET email = 'nowy_email@example.com' WHERE id = 5;
+
+15.INSERT INTO zamowienia (klient_id, produkt_id, ilosc) VALUES (1, 2, 1);
+
+16.
+INSERT INTO kategorie (nazwa) VALUES ('Elektronika');
+INSERT INTO kategorie (nazwa) VALUES ('AGD');
+INSERT INTO kategorie (nazwa) VALUES ('RTV');
+INSERT INTO kategorie (nazwa) VALUES ('Meble');
+INSERT INTO kategorie (nazwa) VALUES ('Zabawki');
+
+17.
+UPDATE produkty SET cena = cena * 0.9 WHERE kategoria_id = (SELECT id FROM kategorie WHERE nazwa = 'AGD');
+
+18.
+UPDATE klienci SET data_rejestracji = CURRENT_DATE;
+
+19.
+INSERT INTO odpowiedzi (uzytkownik_id, tresc, data_rejestracji, liczba_postow) VALUES (1, 'Odpowiedź 1', '2020-01-01', 10);
+INSERT INTO odpowiedzi (uzytkownik_id, tresc, data_rejestracji, liczba_postow) VALUES (2, 'Odpowiedź 2', '2019-05-15', 20);
+INSERT INTO odpowiedzi (uzytkownik_id, tresc, data_rejestracji, liczba_postow) VALUES (3, 'Odpowiedź 3', '2021-07-20', 5);
+INSERT INTO odpowiedzi (uzytkownik_id, tresc, data_rejestracji, liczba_postow) VALUES (4, 'Odpowiedź 4', '2018-11-30', 15);
+INSERT INTO odpowiedzi (uzytkownik_id, tresc, data_rejestracji, liczba_postow) VALUES (5, 'Odpowiedź 5', '2022-03-10', 8);
+
+20.
+UPDATE produkty SET ilosc_na_stanie = 0 WHERE ilosc_na_stanie IS NULL;
+
+21.
+SELECT * FROM Klienci WHERE YEAR(data_rejestracji) = 2021;
+
+22.
+SELECT * FROM Produkty WHERE cena > 1000;
+
+23.
+SELECT COUNT(*) FROM Klienci WHERE data_rejestracji >= CURDATE() - INTERVAL 30 DAY;
+
+24
+SELECT klienci.imie, klienci.nazwisko FROM klienci JOIN Zamowienia ON zamowienia.klient_id = klienci.id GROUP BY klienci.id ORDER BY COUNT(zamowienia.klient_id) DESC LIMIT 1;
+
+25
+SELECT * FROM Zamowienia WHERE data_zamowienia >= CURDATE() - INTERVAL 7 DAY ORDER BY data_zamowienia DESC;
+
+26
+SELECT * FROM `produkty` ORDER BY cena ASC LIMIT 5;
+
+27
+SELECT klient_id, COUNT(zamowienia.id) AS liczba_zamowien FROM Zamowienia GROUP BY klient_id;
+
+28
+SELECT nazwa_produktu, cena FROM Produkty WHERE kategoria = '2';
+
+29
+SELECT klienci.id, klienci.imie, klienci.nazwisko FROM klienci JOIN zamowienia ON klienci.id = zamowienia.klient_id JOIN produkty ON zamowienia.produkt_id = produkty.id WHERE produkty.cena > 200 GROUP BY klienci.id ORDER BY COUNT(zamowienia.id) DESC LIMIT 1;
+
+30
+SELECT odpowiedzi.uzytkownik_id, COUNT(odpowiedzi.id) AS liczba_postow FROM klienci JOIN odpowiedzi ON klienci.id = odpowiedzi.uzytkownik_id GROUP BY klienci.id
+
+31
+SELECT nazwa, AVG(cena) AS srednia_cena FROM produkty GROUP BY nazwa;
+
+32
+SELECT zamowienia.id FROM zamowienia JOIN produkty ON zamowienia.produkt_id = produkty.id GROUP BY zamowienia.produkt_id HAVING COUNT(DISTINCT produkty.id) >= 3;
+
+
+
+

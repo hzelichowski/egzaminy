@@ -1,0 +1,38 @@
+*{
+    margin: 0;
+    font-family: arial;
+}
+.baner{
+    background-color: #483D8B;
+    height: 150px;
+    width: 30%;
+    float: left;
+
+}
+.baner2{
+    background-color: #483D8B;
+    height: 150px;
+    width: 70%;
+    color: white;
+    float: left;
+}
+.clr{
+    clear: both;
+    height: 0;
+}
+.dzien{
+    background-color: #AFEEEE;
+    width: 150px;
+    height: 100px;
+    margin: 3px;
+    border: 1px solid;
+    float: left;
+}
+.stopka{
+    background-color: #483D8B;
+    color: white;
+    padding: 10px;
+}
+h5{
+    text-align: center;
+}

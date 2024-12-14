@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karty wędkarskie</title>
+    <link rel="stylesheet" href="styl_1.css">
+</head>
+<body>
+    <div class="baner">
+        <h2>Zgłoszenie na kartę wędkarską</h2>
+    </div>
+    <div class="glowny">
+        <h4>Formularz - karta wędkarska</h4>
+        <form action="zapisz.php" method="post">
+            imię: <br>
+            <input type="text" name="imie" id="imie"><br>
+            nazwisko: <br>
+            <input type="text" name="nazwisko" id="nazwisko"><br>
+            adres: <br>
+            <input type="text" name="adres" id="adres" size="30"><br>
+            <input type="reset" value="CZYŚĆ"> <input type="submit" value="ZAPISZ" id="wyslij" name="wyslij">
+
+        </form>
+    </div>
+    <div class="lewy">
+        <h4>Typy łowisk</h4>
+        <dl>
+            <li>Zalewy</li>
+            <li>Stawy</li>
+            <li>Jeziora</li>
+            <li>Rzeki</li>
+        </dl>
+    </div>
+    <div class="srodek">
+        <img src="wedka.jpg" alt="karta wędkarska">
+    </div>
+    <div class="prawy">
+        <p>Stronę przygotował: 23 HŻ</p> <br>
+        <a href="http://www.kartawedkarska.pl/"> Karta Wędkarska</a>
+    </div>
+    <div class="clr">&nbsp;</div>
+</body>
+</html>
